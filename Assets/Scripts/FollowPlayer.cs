@@ -5,8 +5,8 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     
-    private float offsetZ = 5;
-    private float offsetY = 2;
+    [SerializeField] private float offsetZ = 5;
+    [SerializeField] private float offsetY = 2;
 
     // Update is called once per frame
     void Update()
