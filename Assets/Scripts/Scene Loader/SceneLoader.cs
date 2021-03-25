@@ -13,6 +13,7 @@ public class SceneLoader : MonoBehaviour
         foreach(string sceneName in scenes)
         {
             SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            //TODO remove this comment lol
         }
     }
 
