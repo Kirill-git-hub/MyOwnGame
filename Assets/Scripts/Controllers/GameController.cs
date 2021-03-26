@@ -63,6 +63,6 @@ public class GameController : MonoBehaviour
     public void DealDamageToPlayer(int damage)
     {
         playerObject.GetComponent<PlayerData>().PlayerHealth -= damage;
-        UserInterfaceController.instance.ShowHealth();
+        UserInterfaceController.instance.ShowHealth(playerObject.GetComponent<PlayerData>().PlayerHealth);
     }
 }

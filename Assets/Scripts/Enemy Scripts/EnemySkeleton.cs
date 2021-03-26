@@ -43,7 +43,7 @@ public class EnemySkeleton : Enemy
     }
     private void OnTriggerEnter2D(Collider2D trigger)
     {
-        if(trigger.gameObject.tag == "EnemyBoundary")
+        if(trigger.gameObject.CompareTag("EnemyBoundary"))
         {
             if (moveRight)
             {

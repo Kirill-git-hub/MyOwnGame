@@ -25,6 +25,7 @@ public class UserInterfaceController : MonoBehaviour
         // Теперь нам нужно указать, чтобы объект не уничтожался
         // при переходе на другую сцену игры
         DontDestroyOnLoad(gameObject);
+        
     }
 
     #endregion
@@ -41,11 +42,15 @@ public class UserInterfaceController : MonoBehaviour
     public void RestartGame()
     {
         GameController.instance.RespawnPlayer();
+        
+        if (GameController.instance.playerObject != null)
+        {
+            ShowHealth(GameController.instance.playerObject.GetComponent<PlayerData>().PlayerHealth);
+        }
     }
 
-    public void ShowHealth()
+    public void ShowHealth(int currentHealth)
     {
-
-        //healthText.text = playerData.MaxHealth.ToString();
+        healthText.text = currentHealth.ToString();
     }
 }
