@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected int health = 3;
     [SerializeField] private bool canBeKilled = true;
     [SerializeField] private bool instantKill = false;
-    protected float deathTime = 0.5f;
+    
 
     public int Damage
     {
