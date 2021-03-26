@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
         //    GameController.instance.KillPlayer(deathTime);
         //    //ui.playerDeathTrue();
         //}
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 
