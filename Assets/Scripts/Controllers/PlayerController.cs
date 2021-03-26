@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private float speed = 4.5f;
     private float deathTime = 0.5f;
     private Animator anim;
-    private Rigidbody2D playerRB;
+    private Rigidbody2D playerRb;
 
     [SerializeField] private PlayerData playerData;
 
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerRB = GetComponent<Rigidbody2D>();
+        playerRb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
 
@@ -34,20 +34,20 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = Input.GetAxisRaw("Horizontal");
 
-        playerRB.velocity = new Vector2(moveInput * speed, playerRB.velocity.y);
+        playerRb.velocity = new Vector2(moveInput * speed, playerRb.velocity.y);
 
         anim.SetFloat("Speed", Mathf.Abs(moveInput));
 
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
         {
-            playerRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isOnGround = false;
             canDoubleJump = true;
             anim.SetBool("Jump", true);
         }
         else if(Input.GetKeyDown(KeyCode.Space) && !isOnGround && canDoubleJump)
         {
-            playerRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             anim.SetBool("Jump", true);
             canDoubleJump = false;
         }
