@@ -42,14 +42,9 @@ public class UserInterfaceController : MonoBehaviour
     public void RestartGame()
     {
         GameController.instance.RespawnPlayer();
-        
-        if (GameController.instance.playerObject != null)
-        {
-            ShowHealth(GameController.instance.playerObject.GetComponent<PlayerData>().PlayerHealth);
-        }
     }
 
-    public void ShowHealth(int currentHealth)
+    public void UpdateHealth(int currentHealth)
     {
         healthText.text = currentHealth.ToString();
     }
