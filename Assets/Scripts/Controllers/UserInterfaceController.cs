@@ -34,6 +34,10 @@ public class UserInterfaceController : MonoBehaviour
     public GameObject deathPanel;
     public Button restartButton;
     
+    [SerializeField] private Image[] heartImage;
+    [SerializeField] private Sprite fullHeartSprite;
+    [SerializeField] private Sprite emptyHeartSprite;
+    private PlayerData playerData;
     public void ShowDeathMessage()
     {
         deathPanel.gameObject.SetActive(true);
@@ -46,6 +50,19 @@ public class UserInterfaceController : MonoBehaviour
 
     public void UpdateHealth(int currentHealth)
     {
-        healthText.text = currentHealth.ToString();
+        playerData = GameController.instance.playerObject.GetComponent<PlayerData>();
+
+        for (int i = 0; i < heartImage.Length; i++)
+        {
+            if (i < playerData.PlayerHealth)
+            {
+                heartImage[i].enabled = true;
+            }
+            else
+            {
+                heartImage[i].enabled = false;
+            }
+        }
+        healthText.SetText(currentHealth.ToString());
     }
 }
