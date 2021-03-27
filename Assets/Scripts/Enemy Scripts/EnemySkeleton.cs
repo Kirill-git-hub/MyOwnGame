@@ -32,7 +32,6 @@ public class EnemySkeleton : Enemy
             enemyRd.velocity = new Vector2(-1, enemyRd.velocity.y);  
         }
         
-        
     }
     void EnemyFlip()
     {
