@@ -30,14 +30,12 @@ public class UserInterfaceController : MonoBehaviour
 
     #endregion
 
-    public TextMeshProUGUI healthText;
+    //public TextMeshProUGUI healthText;
     public GameObject deathPanel;
     public Button restartButton;
     
-    [SerializeField] private Image[] heartImage;
+    [SerializeField] private List<Image> heartImage;
     [SerializeField] private Sprite fullHeartSprite;
-    [SerializeField] private Sprite emptyHeartSprite;
-    private PlayerData playerData;
     public void ShowDeathMessage()
     {
         deathPanel.gameObject.SetActive(true);
@@ -50,11 +48,9 @@ public class UserInterfaceController : MonoBehaviour
 
     public void UpdateHealth(int currentHealth)
     {
-        playerData = GameController.instance.playerObject.GetComponent<PlayerData>();
-
-        for (int i = 0; i < heartImage.Length; i++)
+        for (int i = 0; i < heartImage.Count; i++)
         {
-            if (i < playerData.PlayerHealth)
+            if (i < GameController.instance.PlayerData.PlayerHealth)
             {
                 heartImage[i].enabled = true;
             }
@@ -63,6 +59,6 @@ public class UserInterfaceController : MonoBehaviour
                 heartImage[i].enabled = false;
             }
         }
-        healthText.SetText(currentHealth.ToString());
+        //healthText.SetText(currentHealth.ToString());
     }
 }
