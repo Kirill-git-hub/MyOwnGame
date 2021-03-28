@@ -40,6 +40,7 @@ public class GameController : MonoBehaviour
     public GameObject playerObject = null;
     private bool playerIsAlive = false;
     private PlayerData playerData;
+    public PlayerData PlayerData => playerData;
     public void RespawnPlayer()
     {
         if (!playerIsAlive && playerContainer)
