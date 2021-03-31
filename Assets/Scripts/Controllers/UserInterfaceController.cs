@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class UserInterfaceController : MonoBehaviour
 {
@@ -36,7 +34,7 @@ public class UserInterfaceController : MonoBehaviour
     
     [SerializeField] private List<GameObject> heartObjects;
     [SerializeField] private GameObject heartTemplate;
-    [SerializeField] private RectTransform healthConteiner;
+    [SerializeField] private RectTransform healthContainer;
     
     public void ShowDeathMessage()
     {
@@ -71,7 +69,7 @@ public class UserInterfaceController : MonoBehaviour
 
             if (heartObjects.Count < currentHealth)
             {
-                GameObject item = Instantiate(heartTemplate, healthConteiner);
+                GameObject item = Instantiate(heartTemplate, healthContainer);
                 item.SetActive(true);
                 heartObjects.Add(item);
             }
