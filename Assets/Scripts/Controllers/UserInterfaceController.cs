@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -29,13 +30,14 @@ public class UserInterfaceController : MonoBehaviour
     }
 
     #endregion
-
-    //public TextMeshProUGUI healthText;
+    
     public GameObject deathPanel;
     public Button restartButton;
     
-    [SerializeField] private List<Image> heartImage;
-    [SerializeField] private Sprite fullHeartSprite;
+    [SerializeField] private List<GameObject> heartObjects;
+    [SerializeField] private GameObject heartTemplate;
+    [SerializeField] private RectTransform healthConteiner;
+    
     public void ShowDeathMessage()
     {
         deathPanel.gameObject.SetActive(true);
@@ -48,17 +50,31 @@ public class UserInterfaceController : MonoBehaviour
 
     public void UpdateHealth(int currentHealth)
     {
-        for (int i = 0; i < heartImage.Count; i++)
+        if (currentHealth <= 0)
         {
-            if (i < GameController.instance.PlayerData.PlayerHealth)
+            foreach (var item in heartObjects)
             {
-                heartImage[i].enabled = true;
+                Destroy(item);
             }
-            else
+            
+            heartObjects.Clear();
+        }
+        
+        for (int i = 0; i < currentHealth; i++)
+        {
+            if (heartObjects.Count > currentHealth)
             {
-                heartImage[i].enabled = false;
+                GameObject item = heartObjects[0];
+                heartObjects.Remove(item);
+                Destroy(item);
+            }
+
+            if (heartObjects.Count < currentHealth)
+            {
+                GameObject item = Instantiate(heartTemplate, healthConteiner);
+                item.SetActive(true);
+                heartObjects.Add(item);
             }
         }
-        //healthText.SetText(currentHealth.ToString());
     }
 }

@@ -59,12 +59,13 @@ public class GameController : MonoBehaviour
             Destroy(playerObject, killAfter);
             playerObject = null;
             playerIsAlive = false;
-            UserInterfaceController.instance.ShowDeathMessage();
+            UserInterfaceController.instance.ShowDeathMessage();            
+            UserInterfaceController.instance.UpdateHealth(0);
         }
     }
     public void DealDamageToPlayer(int damage)
     {
-        playerObject.GetComponent<PlayerData>().PlayerHealth -= damage;
+        PlayerData.PlayerHealth -= damage;
         UserInterfaceController.instance.UpdateHealth(playerData.PlayerHealth);
     }
 }
