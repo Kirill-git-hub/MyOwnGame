@@ -32,7 +32,7 @@ public class UserInterfaceController : MonoBehaviour
     public GameObject deathPanel;
     public Button restartButton;
     
-    [SerializeField] private List<GameObject> heartObjects;
+    private List<GameObject> heartObjects = new List<GameObject>();
     [SerializeField] private GameObject heartTemplate;
     [SerializeField] private RectTransform healthContainer;
     
