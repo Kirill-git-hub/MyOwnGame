@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-
     #region Singleton creation
 
     public static GameController instance = null; // Экземпляр объекта
@@ -23,22 +22,20 @@ public class GameController : MonoBehaviour
         { // Экземпляр объекта уже существует на сцене
             Destroy(gameObject); // Удаляем объект
         }
-
         // Теперь нам нужно указать, чтобы объект не уничтожался
         // при переходе на другую сцену игры
         DontDestroyOnLoad(gameObject);
-
-        
     }
 
     #endregion
-
+    
     public GameObject playerPrefab = null;
     public Transform playerContainer = null;
-    
+
     [HideInInspector]
     public GameObject playerObject = null;
     private bool playerIsAlive = false;
+    [SerializeField] private List<EnemySpawn> spawnPosition = new List<EnemySpawn>();
     private PlayerData playerData;
     public PlayerData PlayerData => playerData;
     public void RespawnPlayer()
@@ -52,6 +49,13 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void SpawnManager()
+    {
+        foreach (var pos in spawnPosition)
+        {
+            pos.Spawn();
+        }
+    }
     public void KillPlayer(float killAfter = 0f)
     {
         if (playerIsAlive && playerObject)

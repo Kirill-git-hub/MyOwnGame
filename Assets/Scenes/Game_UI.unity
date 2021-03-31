@@ -719,7 +719,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathPanel: {fileID: 1225683888}
   restartButton: {fileID: 1088545840}
-  heartObjects: []
   heartTemplate: {fileID: 1077724860}
   healthContainer: {fileID: 490601852}
 --- !u!4 &1205179543
