@@ -35,18 +35,20 @@ public class GameController : MonoBehaviour
 
     public GameObject playerPrefab = null;
     public Transform playerContainer = null;
- 
-
+    
     [HideInInspector]
     public GameObject playerObject = null;
     private bool playerIsAlive = false;
-
+    private PlayerData playerData;
+    public PlayerData PlayerData => playerData;
     public void RespawnPlayer()
     {
         if (!playerIsAlive && playerContainer)
         {
             playerObject = Instantiate(playerPrefab, playerContainer);
             playerIsAlive = true;
+            playerData = playerObject.GetComponent<PlayerData>();
+            UserInterfaceController.instance.UpdateHealth(playerData.PlayerHealth);
         }
     }
 
@@ -57,12 +59,13 @@ public class GameController : MonoBehaviour
             Destroy(playerObject, killAfter);
             playerObject = null;
             playerIsAlive = false;
-            UserInterfaceController.instance.ShowDeathMessage();
+            UserInterfaceController.instance.ShowDeathMessage();            
+            UserInterfaceController.instance.UpdateHealth(0);
         }
     }
     public void DealDamageToPlayer(int damage)
     {
-        playerObject.GetComponent<PlayerData>().PlayerHealth -= damage;
-        UserInterfaceController.instance.ShowHealth(playerObject.GetComponent<PlayerData>().PlayerHealth);
+        PlayerData.PlayerHealth -= damage;
+        UserInterfaceController.instance.UpdateHealth(playerData.PlayerHealth);
     }
 }

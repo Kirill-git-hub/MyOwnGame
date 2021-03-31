@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class UserInterfaceController : MonoBehaviour
 {
@@ -29,10 +28,13 @@ public class UserInterfaceController : MonoBehaviour
     }
 
     #endregion
-
-    public TextMeshProUGUI healthText;
+    
     public GameObject deathPanel;
     public Button restartButton;
+    
+    private List<GameObject> heartObjects = new List<GameObject>();
+    [SerializeField] private GameObject heartTemplate;
+    [SerializeField] private RectTransform healthContainer;
     
     public void ShowDeathMessage()
     {
@@ -42,15 +44,35 @@ public class UserInterfaceController : MonoBehaviour
     public void RestartGame()
     {
         GameController.instance.RespawnPlayer();
-        
-        if (GameController.instance.playerObject != null)
-        {
-            ShowHealth(GameController.instance.playerObject.GetComponent<PlayerData>().PlayerHealth);
-        }
     }
 
-    public void ShowHealth(int currentHealth)
+    public void UpdateHealth(int currentHealth)
     {
-        healthText.text = currentHealth.ToString();
+        if (currentHealth <= 0)
+        {
+            foreach (var item in heartObjects)
+            {
+                Destroy(item);
+            }
+            
+            heartObjects.Clear();
+        }
+        
+        for (int i = 0; i < currentHealth; i++)
+        {
+            if (heartObjects.Count > currentHealth)
+            {
+                GameObject item = heartObjects[0];
+                heartObjects.Remove(item);
+                Destroy(item);
+            }
+
+            if (heartObjects.Count < currentHealth)
+            {
+                GameObject item = Instantiate(heartTemplate, healthContainer);
+                item.SetActive(true);
+                heartObjects.Add(item);
+            }
+        }
     }
 }

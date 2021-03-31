@@ -88,13 +88,6 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("Jump", false);
             }
         }
-
-        //if (collision.gameObject.tag == "PlayerDeath")
-        //{
-        //    anim.SetBool("Die", true);
-        //    GameController.instance.KillPlayer(deathTime);
-        //    //ui.playerDeathTrue();
-        //}
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
@@ -118,17 +111,7 @@ public class PlayerController : MonoBehaviour
                     anim.SetBool("Hurt", true);
                     
                 }
-
             }
-
-            //if (playerData.PlayerHealth == 0)
-            //{
-            //    anim.SetBool("Die", true);
-            //}
-            //else
-            //{
-            //    anim.SetBool("Hurt", true);
-            //}
         }
         else
         {
@@ -138,15 +121,6 @@ public class PlayerController : MonoBehaviour
     
     void Flip()
     {
-        //if(moveInput >= 0)
-        //{
-        //    // transform.localScale = new Vector2(-1,0);
-        //    transform.eulerAngles = new Vector2(0, 0);
-        //}
-        //else
-        //{
-        //    transform.eulerAngles = new Vector2(0, 180);
-        //}
         facingRight = !facingRight;
         Vector2 localScale = transform.localScale;
         localScale.x *= -1;
