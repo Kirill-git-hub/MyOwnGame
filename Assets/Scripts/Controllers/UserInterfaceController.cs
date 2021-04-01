@@ -20,7 +20,6 @@ public class UserInterfaceController : MonoBehaviour
         {  // Экземпляр объекта уже существует на сцене
             Destroy(gameObject); // Удаляем объект
         }
-
         // Теперь нам нужно указать, чтобы объект не уничтожался
         // при переходе на другую сцену игры
         DontDestroyOnLoad(gameObject);

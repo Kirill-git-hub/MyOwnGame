@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class EnemySkeleton : Enemy
 {
+    
     private Rigidbody2D enemyRd;
     private bool faceRight = true;
     private Animator zombieAnim;
-
-    //private Vector2 startPos;
 
     public bool moveRight = true;
 
@@ -17,7 +16,6 @@ public class EnemySkeleton : Enemy
     {
         enemyRd = GetComponent<Rigidbody2D>();
         zombieAnim = GetComponent<Animator>();
-        //startPos = transform.position;
     }
 
     // Update is called once per frame
@@ -32,6 +30,7 @@ public class EnemySkeleton : Enemy
             enemyRd.velocity = new Vector2(-1, enemyRd.velocity.y);  
         }
     }
+    
     void EnemyFlip()
     {
         faceRight = !faceRight;
@@ -39,6 +38,7 @@ public class EnemySkeleton : Enemy
         enemyLocalScale.x *= -1;
         transform.localScale = enemyLocalScale;
     }
+    
     private void OnTriggerEnter2D(Collider2D trigger)
     {
         if(trigger.gameObject.CompareTag("EnemyBoundary"))
@@ -55,6 +55,7 @@ public class EnemySkeleton : Enemy
             }
         }
     }
+    
     public override void DealDamage(int damage)
     {
         health -= damage;

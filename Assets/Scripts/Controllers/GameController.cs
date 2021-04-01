@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour
     private bool playerIsAlive = false;
     [SerializeField] private List<EnemySpawn> spawnPosition = new List<EnemySpawn>();
     private PlayerData playerData;
+    
     public PlayerData PlayerData => playerData;
     public void RespawnPlayer()
     {
@@ -68,6 +69,7 @@ public class GameController : MonoBehaviour
             UserInterfaceController.instance.UpdateHealth(0);
         }
     }
+    
     public void DealDamageToPlayer(int damage)
     {
         PlayerData.PlayerHealth -= damage;

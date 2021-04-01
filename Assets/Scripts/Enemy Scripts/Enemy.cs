@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    
     [SerializeField] private int damage = 1;
     [SerializeField] protected int health = 3;
     [SerializeField] private bool canBeKilled = true;
     [SerializeField] private bool instantKill = false;
+    
     public int Damage
     {
         get => damage;
     }
+    
     public bool CanBeKilled
     {
         get => canBeKilled;

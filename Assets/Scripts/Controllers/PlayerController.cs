@@ -51,10 +51,12 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Jump", true);
             canDoubleJump = false;
         }
+        
         if(moveInput > 0 && !facingRight || moveInput < 0 && facingRight)
         {
             Flip();
         }
+        
         if (Input.GetKeyDown(KeyCode.F) && moveInput != 0 || Input.GetKeyDown(KeyCode.F) && moveInput == 0)
         {
             anim.SetBool("Attack", true);
@@ -68,6 +70,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         GameObject collidedObject = collision.gameObject;
+        
         if (collidedObject.CompareTag("Enemy") && anim.GetBool("Attack"))
         {
             if (collision.gameObject.GetComponent<Enemy>().CanBeKilled)

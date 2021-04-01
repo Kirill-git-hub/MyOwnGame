@@ -6,6 +6,7 @@ using UnityEngine;
 public class Coins : MonoBehaviour
 {
     private int speed = 3;
+    
     private void Update()
     {
         transform.Rotate(Vector3.up * speed);
