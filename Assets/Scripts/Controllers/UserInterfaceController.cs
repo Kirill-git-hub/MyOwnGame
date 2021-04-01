@@ -46,10 +46,6 @@ public class UserInterfaceController : MonoBehaviour
         EnemySpawn enemySpawn = GetComponent<EnemySpawn>();
         GameController.instance.RespawnPlayer();
         GameController.instance.SpawnManager();
-        if (enemySpawn.zombieObject != null)
-        {
-            Destroy(enemySpawn.zombieObject);
-        }
     }
 
     public void UpdateHealth(int currentHealth)

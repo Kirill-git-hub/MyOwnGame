@@ -31,7 +31,6 @@ public class EnemySkeleton : Enemy
         {
             enemyRd.velocity = new Vector2(-1, enemyRd.velocity.y);  
         }
-        
     }
     void EnemyFlip()
     {
@@ -56,7 +55,6 @@ public class EnemySkeleton : Enemy
             }
         }
     }
-
     public override void DealDamage(int damage)
     {
         health -= damage;
@@ -69,7 +67,6 @@ public class EnemySkeleton : Enemy
         else
         {
             zombieAnim.SetTrigger("Hit");
-
         }
     }
 

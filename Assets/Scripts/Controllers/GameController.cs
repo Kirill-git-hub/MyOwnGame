@@ -53,6 +53,10 @@ public class GameController : MonoBehaviour
     {
         foreach (var pos in spawnPosition)
         {
+            if (pos.zombieObject)
+            {
+                Destroy(pos.zombieObject);
+            }
             pos.Spawn();
         }
     }

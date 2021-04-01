@@ -10,5 +10,6 @@ public class EnemySpawn : MonoBehaviour
     public void Spawn()
     {
         zombieObject = Instantiate(zombiePrefab,transform);
+        
     }
 }
