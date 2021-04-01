@@ -49,17 +49,14 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void SpawnManager()
+    public void RespawnEnemies()
     {
         foreach (var pos in spawnPosition)
         {
-            if (pos.zombieObject)
-            {
-                Destroy(pos.zombieObject);
-            }
-            pos.Spawn();
+            pos.SpawnEnemy();
         }
     }
+    
     public void KillPlayer(float killAfter = 0f)
     {
         if (playerIsAlive && playerObject)
@@ -75,5 +72,11 @@ public class GameController : MonoBehaviour
     {
         PlayerData.PlayerHealth -= damage;
         UserInterfaceController.instance.UpdateHealth(playerData.PlayerHealth);
+    }
+    
+    public void RestartGame()
+    {
+        RespawnPlayer();
+        RespawnEnemies();
     }
 }

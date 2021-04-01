@@ -41,11 +41,9 @@ public class UserInterfaceController : MonoBehaviour
         deathPanel.gameObject.SetActive(true);
     }
 
-    public void RestartGame()
+    public void TriggerRestart()
     {
-        EnemySpawn enemySpawn = GetComponent<EnemySpawn>();
-        GameController.instance.RespawnPlayer();
-        GameController.instance.SpawnManager();
+        GameController.instance.RestartGame();
     }
 
     public void UpdateHealth(int currentHealth)
