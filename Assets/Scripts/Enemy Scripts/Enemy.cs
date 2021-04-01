@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected int health = 3;
     [SerializeField] private bool canBeKilled = true;
     [SerializeField] private bool instantKill = false;
-
     public int Damage
     {
         get => damage;

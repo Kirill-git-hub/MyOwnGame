@@ -41,9 +41,9 @@ public class UserInterfaceController : MonoBehaviour
         deathPanel.gameObject.SetActive(true);
     }
 
-    public void RestartGame()
+    public void TriggerRestart()
     {
-        GameController.instance.RespawnPlayer();
+        GameController.instance.RestartGame();
     }
 
     public void UpdateHealth(int currentHealth)

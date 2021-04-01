@@ -75,10 +75,6 @@ public class PlayerController : MonoBehaviour
                 collision.gameObject.GetComponent<Enemy>().DealDamage(playerData.Damage);
             }
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
         if (!isOnGround)
         {
             if (collision.gameObject.CompareTag("Ground"))
@@ -88,6 +84,11 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("Jump", false);
             }
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
