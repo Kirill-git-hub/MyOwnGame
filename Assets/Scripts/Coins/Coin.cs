@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coins : MonoBehaviour
+public class Coin : MonoBehaviour
 {
-    private int speed = 3;
+    private const int rotation_Speed = 3;
+    private GameObject coinObject;
+    [SerializeField] private GameObject coinPrefab;
     
     private void Update()
     {
-        transform.Rotate(Vector3.up * speed);
+        transform.Rotate(Vector3.up * rotation_Speed);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -19,4 +21,5 @@ public class Coins : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
 }
