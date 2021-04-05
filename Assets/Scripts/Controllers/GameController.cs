@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     public static GameController instance = null; // Экземпляр объекта
 
     // Метод, выполняемый при старте игры
-    void Start()
+    void Awake()
     {
         // Теперь, проверяем существование экземпляра
         if (instance == null)
@@ -35,10 +35,12 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public GameObject playerObject = null;
     private bool playerIsAlive = false;
-    [SerializeField] private List<EnemySpawn> spawnPosition = new List<EnemySpawn>();
+    private List<Spawner> enemySpawners = new List<Spawner>();
+    private List<Spawner> coinSpawners = new List<Spawner>();
     private PlayerData playerData;
     
     public PlayerData PlayerData => playerData;
+    public List<Spawner> EnemySpawners => enemySpawners;
     public void RespawnPlayer()
     {
         if (!playerIsAlive && playerContainer)
@@ -52,9 +54,9 @@ public class GameController : MonoBehaviour
 
     public void RespawnEnemies()
     {
-        foreach (var pos in spawnPosition)
+        foreach (var pos in enemySpawners)
         {
-            pos.SpawnEnemy();
+            pos.Spawn();
         }
     }
     

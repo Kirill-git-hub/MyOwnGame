@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class Coin : Spawner
 {
     private const int rotation_Speed = 3;
     private GameObject coinObject;
