@@ -6,9 +6,8 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject prefabToSpawn;
-    
     private GameObject spawnedObject;
-
+    
     public void Spawn()
     {
         if (spawnedObject != null)

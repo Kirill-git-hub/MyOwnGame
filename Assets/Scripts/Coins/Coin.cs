@@ -19,5 +19,4 @@ public class Coin : Spawner
             Destroy(gameObject);
         }
     }
-    
 }

@@ -60,6 +60,7 @@ public class GameController : MonoBehaviour
             pos.Spawn();
         }
     }
+    
     public void RespawnCoins()
     {
         foreach (var pos in coinSpawners)
