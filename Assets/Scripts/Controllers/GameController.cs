@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
     
     public PlayerData PlayerData => playerData;
     public List<Spawner> EnemySpawners => enemySpawners;
+    public List<Spawner> CoinSpawners => coinSpawners;
     public void RespawnPlayer()
     {
         if (!playerIsAlive && playerContainer)
@@ -55,6 +56,13 @@ public class GameController : MonoBehaviour
     public void RespawnEnemies()
     {
         foreach (var pos in enemySpawners)
+        {
+            pos.Spawn();
+        }
+    }
+    public void RespawnCoins()
+    {
+        foreach (var pos in coinSpawners)
         {
             pos.Spawn();
         }
@@ -82,5 +90,6 @@ public class GameController : MonoBehaviour
     {
         RespawnPlayer();
         RespawnEnemies();
+        RespawnCoins();
     }
 }
