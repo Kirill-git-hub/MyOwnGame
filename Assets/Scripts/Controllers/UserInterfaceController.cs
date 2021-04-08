@@ -23,7 +23,6 @@ public class UserInterfaceController : MonoBehaviour
         // Теперь нам нужно указать, чтобы объект не уничтожался
         // при переходе на другую сцену игры
         DontDestroyOnLoad(gameObject);
-        
     }
 
     #endregion
