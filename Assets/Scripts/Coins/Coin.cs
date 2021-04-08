@@ -6,6 +6,12 @@ using UnityEngine;
 public class Coin : Spawner
 {
     private const int rotation_Speed = 3;
+    private static int coin;
+
+    private void Start()
+    {
+        coin = 0;
+    }
 
     private void Update()
     {
@@ -17,6 +23,7 @@ public class Coin : Spawner
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
+            coin += 1;
         }
     }
 }
