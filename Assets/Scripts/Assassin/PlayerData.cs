@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerData : MonoBehaviour
 {
-    [SerializeField] private int damage;
+    [SerializeField] private int damage = 1;
     [SerializeField] private int playerHealth = 3;
     
     public int Damage
