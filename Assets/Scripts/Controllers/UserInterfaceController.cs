@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,6 +34,7 @@ public class UserInterfaceController : MonoBehaviour
     private List<GameObject> heartObjects = new List<GameObject>();
     [SerializeField] private GameObject heartTemplate;
     [SerializeField] private RectTransform healthContainer;
+    [SerializeField] private TextMeshProUGUI coinText;
     
     public void ShowDeathMessage()
     {
@@ -42,6 +44,7 @@ public class UserInterfaceController : MonoBehaviour
     public void TriggerRestart()
     {
         GameController.instance.RestartGame();
+        coinText.text = "x " + 0;
     }
 
     public void UpdateHealth(int currentHealth)
@@ -72,5 +75,10 @@ public class UserInterfaceController : MonoBehaviour
                 heartObjects.Add(item);
             }
         }
+    }
+
+    public void CoinCounter()
+    {
+        coinText.text = "x " + Coin.Coins;
     }
 }

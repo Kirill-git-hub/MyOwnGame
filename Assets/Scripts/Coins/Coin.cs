@@ -8,6 +8,12 @@ public class Coin : Spawner
     private const int rotation_Speed = 3;
     private static int coin;
 
+    public static int Coins
+    {
+        get => coin;
+        set => coin = value;
+    }
+    
     private void Start()
     {
         coin = 0;
@@ -22,8 +28,9 @@ public class Coin : Spawner
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
             coin += 1;
+            UserInterfaceController.instance.CoinCounter();
+            Destroy(gameObject);
         }
     }
 }
