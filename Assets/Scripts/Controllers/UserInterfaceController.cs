@@ -35,7 +35,7 @@ public class UserInterfaceController : MonoBehaviour
     [SerializeField] private GameObject heartTemplate;
     [SerializeField] private RectTransform healthContainer;
     [SerializeField] private TextMeshProUGUI coinText;
-    [SerializeField] private PlayerData playerData;
+
     public void ShowDeathMessage()
     {
         deathPanel.gameObject.SetActive(true);
@@ -79,6 +79,6 @@ public class UserInterfaceController : MonoBehaviour
 
     public void ShowCoins()
     {
-        coinText.text = "x " + playerData.PlayerCoins;
+        coinText.text = "x " + GameController.instance.PlayerData.PlayerCoins;
     }
 }
