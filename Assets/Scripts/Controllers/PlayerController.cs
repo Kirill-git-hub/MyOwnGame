@@ -80,6 +80,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject collidedObject = collision.gameObject;
+
+        if (collidedObject.CompareTag("Coin"))
+        {
+            Destroy(collidedObject);
+            playerData.PlayerCoins += 1;
+            UserInterfaceController.instance.ShowCoins();
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!isOnGround)

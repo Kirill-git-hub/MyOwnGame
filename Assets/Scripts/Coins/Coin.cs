@@ -3,20 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : Spawner
+public class Coin : MonoBehaviour
 {
-    private const int rotation_Speed = 3;
+    private const int ROTATION_SPEED = 3;
 
     private void Update()
     {
-        transform.Rotate(Vector3.up * rotation_Speed);
+        transform.Rotate(Vector3.up * ROTATION_SPEED);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
-    }
 }
