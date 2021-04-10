@@ -10,7 +10,7 @@ public class UserInterfaceController : MonoBehaviour
 
     public static UserInterfaceController instance = null; // Экземпляр объекта
 
-    void Start()
+    void Awake()
     {
         // Теперь, проверяем существование экземпляра
         if (instance == null)
@@ -35,7 +35,7 @@ public class UserInterfaceController : MonoBehaviour
     [SerializeField] private GameObject heartTemplate;
     [SerializeField] private RectTransform healthContainer;
     [SerializeField] private TextMeshProUGUI coinText;
-    
+    [SerializeField] private PlayerData playerData;
     public void ShowDeathMessage()
     {
         deathPanel.gameObject.SetActive(true);
@@ -77,8 +77,8 @@ public class UserInterfaceController : MonoBehaviour
         }
     }
 
-    public void CoinCounter()
+    public void ShowCoins()
     {
-        coinText.text = "x " + Coin.Coins;
+        coinText.text = "x " + playerData.PlayerCoins;
     }
 }
