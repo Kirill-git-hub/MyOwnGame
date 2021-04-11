@@ -110,8 +110,8 @@ public class PlayerController : MonoBehaviour
 
             if (enemy.InstantKill)
             {
-                GameController.instance.KillPlayer(deathTime);
                 anim.SetBool("Die", true);
+                GameController.instance.KillPlayer(deathTime);
             }
             else
             {

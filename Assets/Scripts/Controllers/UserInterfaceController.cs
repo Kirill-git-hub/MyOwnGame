@@ -34,7 +34,7 @@ public class UserInterfaceController : MonoBehaviour
     private List<GameObject> heartObjects = new List<GameObject>();
     [SerializeField] private GameObject heartTemplate;
     [SerializeField] private RectTransform healthContainer;
-    [SerializeField] private TextMeshProUGUI coinText;
+    [SerializeField] private TextMeshProUGUI coinsText;
 
     public void ShowDeathMessage()
     {
@@ -44,7 +44,7 @@ public class UserInterfaceController : MonoBehaviour
     public void TriggerRestart()
     {
         GameController.instance.RestartGame();
-        coinText.text = "x " + 0;
+        coinsText.text = "x " + 0;
     }
 
     public void UpdateHealth(int currentHealth)
@@ -79,6 +79,6 @@ public class UserInterfaceController : MonoBehaviour
 
     public void ShowCoins()
     {
-        coinText.text = "x " + GameController.instance.PlayerData.PlayerCoins;
+        coinsText.text = "x " + GameController.instance.PlayerData.PlayerCoins;
     }
 }

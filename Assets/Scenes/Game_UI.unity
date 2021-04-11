@@ -721,9 +721,7 @@ MonoBehaviour:
   restartButton: {fileID: 1088545840}
   heartTemplate: {fileID: 1077724860}
   healthContainer: {fileID: 490601852}
-  coinText: {fileID: 1983439843}
-  playerData: {fileID: 4608929098864877588, guid: cd39d259cbd97724bb1f0dd2cb078072,
-    type: 3}
+  coinsText: {fileID: 1983439843}
 --- !u!4 &1205179543
 Transform:
   m_ObjectHideFlags: 0
