@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenes:
-  - PlayScene
+  - HomeMenu
   - Game_UI
 --- !u!4 &1082288922
 Transform:

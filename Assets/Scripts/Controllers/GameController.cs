@@ -42,6 +42,13 @@ public class GameController : MonoBehaviour
     public PlayerData PlayerData => playerData;
     public List<Spawner> EnemySpawners => enemySpawners;
     public List<Spawner> CoinSpawners => coinSpawners;
+
+    private void Start()
+    {
+        RestartGame();
+        UserInterfaceController.instance.restartButton.onClick.AddListener(RestartGame);
+    }
+
     public void RespawnPlayer()
     {
         if (!playerIsAlive && playerContainer)
@@ -76,7 +83,7 @@ public class GameController : MonoBehaviour
             Destroy(playerObject, killAfter);
             playerObject = null;
             playerIsAlive = false;
-            UserInterfaceController.instance.ShowDeathMessage();            
+            UserInterfaceController.instance.TriggerDeathPanel();            
             UserInterfaceController.instance.UpdateHealth(0);
         }
     }

@@ -71,11 +71,14 @@ public class PlayerController : MonoBehaviour
     {
         GameObject collidedObject = collision.gameObject;
         
-        if (collidedObject.CompareTag("Enemy") && anim.GetBool("Attack"))
+        if (collidedObject.CompareTag("Enemy"))
         {
-            if (collision.gameObject.GetComponent<Enemy>().CanBeKilled)
+            if (Input.GetKeyUp(KeyCode.F))
             {
-                collision.gameObject.GetComponent<Enemy>().DealDamage(playerData.Damage);
+                if (collision.gameObject.GetComponent<Enemy>().CanBeKilled)
+                {
+                    collision.gameObject.GetComponent<Enemy>().DealDamage(playerData.Damage);
+                }
             }
         }
     }

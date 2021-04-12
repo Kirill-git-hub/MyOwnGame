@@ -36,9 +36,9 @@ public class UserInterfaceController : MonoBehaviour
     [SerializeField] private RectTransform healthContainer;
     [SerializeField] private TextMeshProUGUI coinsText;
 
-    public void ShowDeathMessage()
+    public void TriggerDeathPanel()
     {
-        deathPanel.gameObject.SetActive(true);
+        deathPanel.gameObject.SetActive(!deathPanel.activeSelf);
     }
 
     public void TriggerRestart()
