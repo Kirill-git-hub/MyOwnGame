@@ -93,6 +93,11 @@ public class GameController : MonoBehaviour
         PlayerData.PlayerHealth -= damage;
         UserInterfaceController.instance.UpdateHealth(playerData.PlayerHealth);
     }
+
+    public void IncreasePlayerCoins(int increaseCoins)
+    {
+        PlayerData.PlayerCoins += increaseCoins;
+    }
     
     public void RestartGame()
     {

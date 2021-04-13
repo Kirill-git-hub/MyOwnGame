@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
         if (collidedObject.CompareTag("Coin"))
         {
             Destroy(collidedObject);
-            playerData.PlayerCoins += 1;
+            GameController.instance.IncreasePlayerCoins(playerData.IncreaseCoins);
             UserInterfaceController.instance.ShowCoins();
         }
     }
