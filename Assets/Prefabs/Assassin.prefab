@@ -156,6 +156,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 4608929098864877588}
+  coinsData: {fileID: -562697320114949328, guid: 40de05c30988905488f144413cd0a200,
+    type: 3}
   isOnGround: 0
   facingRight: 1
   canDoubleJump: 0

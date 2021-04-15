@@ -7,13 +7,7 @@ public class PlayerData : MonoBehaviour
 {
     [SerializeField] private int damage = 1;
     [SerializeField] private int playerHealth = 3;
-    [SerializeField] private int increaseCoins = 1;
     private int playerCoins;
-
-    public int IncreaseCoins
-    {
-        get => increaseCoins;
-    }
 
     public int PlayerCoins
     {

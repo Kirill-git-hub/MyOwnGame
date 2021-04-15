@@ -94,9 +94,9 @@ public class GameController : MonoBehaviour
         UserInterfaceController.instance.UpdateHealth(playerData.PlayerHealth);
     }
 
-    public void IncreasePlayerCoins(int increaseCoins)
+    public void IncreasePlayerCoins(int coinDenomination)
     {
-        PlayerData.PlayerCoins += increaseCoins;
+        PlayerData.PlayerCoins += coinDenomination;
     }
     
     public void RestartGame()
