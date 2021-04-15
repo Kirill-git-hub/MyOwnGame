@@ -6,6 +6,12 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     private const int ROTATION_SPEED = 150;
+    [SerializeField] private int coinDenomination;
+
+    public int CoinDenomination
+    {
+        get => coinDenomination;
+    }
 
     private void Update()
     {
