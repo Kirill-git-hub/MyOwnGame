@@ -11,6 +11,7 @@ public class Coin : MonoBehaviour
     public int CoinDenomination
     {
         get => coinDenomination;
+        set => coinDenomination = value;
     }
 
     private void Update()
