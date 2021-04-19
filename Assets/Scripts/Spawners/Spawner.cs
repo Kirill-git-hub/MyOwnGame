@@ -6,9 +6,9 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject prefabToSpawn;
-    private GameObject spawnedObject;
-    private Coin coin;
-    public void Spawn()
+    protected GameObject spawnedObject;
+
+    public virtual void Spawn()
     {
         if (spawnedObject != null)
         {
@@ -17,10 +17,5 @@ public class Spawner : MonoBehaviour
         
         spawnedObject = Instantiate(prefabToSpawn, transform);
 
-        if (spawnedObject.CompareTag("Coin"))
-        {
-            coin = spawnedObject.GetComponent<Coin>();
-            coin.CoinDenomination = Random.Range(2, 6);
-        }
     }
 }
