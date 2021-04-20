@@ -104,5 +104,6 @@ public class GameController : MonoBehaviour
         RespawnPlayer();
         RespawnEnemies();
         RespawnCoins();
+        UserInterfaceController.instance.ShowCoins();
     }
 }

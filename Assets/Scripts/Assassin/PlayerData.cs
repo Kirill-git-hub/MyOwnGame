@@ -7,7 +7,7 @@ public class PlayerData : MonoBehaviour
 {
     [SerializeField] private int damage = 1;
     [SerializeField] private int playerHealth = 3;
-    private int playerCoins;
+    private int playerCoins = 0;
 
     public int PlayerCoins
     {
