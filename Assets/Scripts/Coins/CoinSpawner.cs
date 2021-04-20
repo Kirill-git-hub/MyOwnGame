@@ -5,6 +5,7 @@ using UnityEngine;
 public class CoinSpawner : Spawner
 {
     private Coin coin;
+
     void Start()
     {
         GameController.instance.CoinSpawners.Add(this);
@@ -16,7 +17,6 @@ public class CoinSpawner : Spawner
 
         coin = spawnedObject.GetComponent<Coin>();
         coin.CoinDenomination = RandomCoinDenomination();
-
     }
 
     private int RandomCoinDenomination()

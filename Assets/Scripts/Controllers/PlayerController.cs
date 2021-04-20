@@ -11,8 +11,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private Rigidbody2D playerRb;
 
-    [SerializeField] private PlayerData playerData;
-    [SerializeField] private Coin coin;
+    [SerializeField] private PlayerData playerData;  
 
     public bool isOnGround = true;
     public bool facingRight = true;
@@ -90,8 +89,9 @@ public class PlayerController : MonoBehaviour
 
         if (collidedObject.CompareTag("Coin"))
         {
+            int cDenomination = collidedObject.GetComponent<Coin>().CoinDenomination;
+            GameController.instance.IncreasePlayerCoins(cDenomination);
             Destroy(collidedObject);
-            GameController.instance.IncreasePlayerCoins(coin.CoinDenomination);
             UserInterfaceController.instance.ShowCoins();
         }
     }

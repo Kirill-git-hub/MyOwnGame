@@ -16,6 +16,5 @@ public class Spawner : MonoBehaviour
         }
         
         spawnedObject = Instantiate(prefabToSpawn, transform);
-
     }
 }
