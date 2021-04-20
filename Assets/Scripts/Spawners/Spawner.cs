@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +6,9 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject prefabToSpawn;
-    private GameObject spawnedObject;
-    
-    public void Spawn()
+    protected GameObject spawnedObject;
+
+    public virtual void Spawn()
     {
         if (spawnedObject != null)
         {

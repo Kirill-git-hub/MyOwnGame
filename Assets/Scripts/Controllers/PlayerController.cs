@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private Rigidbody2D playerRb;
 
-    [SerializeField] private PlayerData playerData;
+    [SerializeField] private PlayerData playerData;  
 
     public bool isOnGround = true;
     public bool facingRight = true;
@@ -71,11 +71,14 @@ public class PlayerController : MonoBehaviour
     {
         GameObject collidedObject = collision.gameObject;
         
-        if (collidedObject.CompareTag("Enemy") && anim.GetBool("Attack"))
+        if (collidedObject.CompareTag("Enemy"))
         {
-            if (collision.gameObject.GetComponent<Enemy>().CanBeKilled)
+            if (Input.GetKeyUp(KeyCode.F))
             {
-                collision.gameObject.GetComponent<Enemy>().DealDamage(playerData.Damage);
+                if (collision.gameObject.GetComponent<Enemy>().CanBeKilled)
+                {
+                    collision.gameObject.GetComponent<Enemy>().DealDamage(playerData.Damage);
+                }
             }
         }
     }
@@ -86,8 +89,9 @@ public class PlayerController : MonoBehaviour
 
         if (collidedObject.CompareTag("Coin"))
         {
+            int cDenomination = collidedObject.GetComponent<Coin>().CoinDenomination;
+            GameController.instance.IncreasePlayerCoins(cDenomination);
             Destroy(collidedObject);
-            playerData.PlayerCoins += 1;
             UserInterfaceController.instance.ShowCoins();
         }
     }
@@ -110,8 +114,8 @@ public class PlayerController : MonoBehaviour
 
             if (enemy.InstantKill)
             {
-                GameController.instance.KillPlayer(deathTime);
                 anim.SetBool("Die", true);
+                GameController.instance.KillPlayer(deathTime);
             }
             else
             {
@@ -142,6 +146,5 @@ public class PlayerController : MonoBehaviour
         localScale.x *= -1;
         transform.localScale = localScale;
     }
-    
-    
+ 
 }
