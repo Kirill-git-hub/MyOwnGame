@@ -35,13 +35,13 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public GameObject playerObject = null;
     private bool playerIsAlive = false;
-    private List<Spawner> enemySpawners = new List<Spawner>();
-    private List<Spawner> coinSpawners = new List<Spawner>();
+    private List<EnemySpawner> enemySpawners = new List<EnemySpawner>();
+    private List<CoinSpawner> coinSpawners = new List<CoinSpawner>();
     private PlayerData playerData;
     
     public PlayerData PlayerData => playerData;
-    public List<Spawner> EnemySpawners => enemySpawners;
-    public List<Spawner> CoinSpawners => coinSpawners;
+    public List<EnemySpawner> EnemySpawners => enemySpawners;
+    public List<CoinSpawner> CoinSpawners => coinSpawners;
 
     private void Start()
     {
@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour
 
     public void RespawnEnemies()
     {
-        foreach (var pos in enemySpawners)
+        foreach (EnemySpawner pos in enemySpawners)
         {
             pos.Spawn();
         }
@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
     
     public void RespawnCoins()
     {
-        foreach (var pos in coinSpawners)
+        foreach (CoinSpawner pos in coinSpawners)
         {
             pos.Spawn();
         }
@@ -104,5 +104,6 @@ public class GameController : MonoBehaviour
         RespawnPlayer();
         RespawnEnemies();
         RespawnCoins();
+        UserInterfaceController.instance.ShowCoins();
     }
 }

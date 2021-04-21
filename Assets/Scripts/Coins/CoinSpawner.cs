@@ -9,6 +9,7 @@ public class CoinSpawner : Spawner
     void Start()
     {
         GameController.instance.CoinSpawners.Add(this);
+        Spawn();
     }
 
     public override void Spawn()
