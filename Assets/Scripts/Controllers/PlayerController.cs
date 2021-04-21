@@ -92,10 +92,10 @@ public class PlayerController : MonoBehaviour
             Coin coin = collidedObject.GetComponent<Coin>();
             if (!coin.IsCollected)
             {
+                coin.IsCollected = true;                
                 GameController.instance.IncreasePlayerCoins(coin.CoinDenomination);
                 Destroy(collidedObject);
                 UserInterfaceController.instance.ShowCoins();
-                coin.IsCollected = true;                
             }            
         }
     }
