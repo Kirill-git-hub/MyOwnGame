@@ -76,9 +76,9 @@ public class PlayerController : MonoBehaviour
 
     public void HitEnemy()
     {
-        enemyOrigin = new Vector2(transform.position.x, transform.position.y - enemyRayOffsetY);
+        enemyOrigin = new Vector2(transform.position.x, transform.position.y - ENEMY_RAY_OFFSET_Y);
 
-        RaycastHit2D hit = Physics2D.Raycast(enemyOrigin, enemyRayDirection, enemyRayDistance, LayerMask.GetMask("Enemy"));
+        RaycastHit2D hit = Physics2D.Raycast(enemyOrigin, enemyRayDirection, ENEMY_RAY_DISTANCE, LayerMask.GetMask("Enemy"));
 
         if(hit.collider != null)
         {
