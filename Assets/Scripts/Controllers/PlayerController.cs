@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     private float deathTime = 0.5f;
     private Animator anim;
     private Rigidbody2D playerRb;
+    private Vector2 enemyOrigin;
+    private Vector2 enemyRayDirection;
+    private float enemyRayDistance;
 
     [SerializeField] private PlayerData playerData;  
 
@@ -22,12 +25,15 @@ public class PlayerController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         Movement();
+        
     }
     
     void Movement()
@@ -60,6 +66,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && moveInput != 0 || Input.GetKeyDown(KeyCode.F) && moveInput == 0)
         {
             anim.SetBool("Attack", true);
+            HitEnemy();
         }
         else
         {
@@ -67,21 +74,42 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    public void HitEnemy()
     {
-        GameObject collidedObject = collision.gameObject;
-        
-        if (collidedObject.CompareTag("Enemy"))
+        enemyOrigin = new Vector2(transform.position.x, transform.position.y - 0.6f);
+        enemyRayDirection = transform.right;
+        enemyRayDistance = 1f;
+
+        //Debug.DrawRay(enemyOrigin, transform.right * 1f, Color.red);
+
+        RaycastHit2D hit = Physics2D.Raycast(enemyOrigin, enemyRayDirection, enemyRayDistance, LayerMask.GetMask("Enemy"));
+
+        if(hit.collider != null)
         {
-            if (Input.GetKeyUp(KeyCode.F))
+            Enemy collidedObject = hit.collider.gameObject.GetComponent<Enemy>();
+
+            if (collidedObject.CanBeKilled)
             {
-                if (collision.gameObject.GetComponent<Enemy>().CanBeKilled)
-                {
-                    collision.gameObject.GetComponent<Enemy>().DealDamage(playerData.Damage);
-                }
+                collidedObject.DealDamage(playerData.Damage);
             }
         }
     }
+
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    GameObject collidedObject = collision.gameObject;
+
+    //    if (collidedObject.CompareTag("Enemy"))
+    //    {
+    //        if (Input.GetKeyUp(KeyCode.F))
+    //        {
+    //            if (collision.gameObject.GetComponent<Enemy>().CanBeKilled)
+    //            {
+    //                collision.gameObject.GetComponent<Enemy>().DealDamage(playerData.Damage);
+    //            }
+    //        }
+    //    }
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
