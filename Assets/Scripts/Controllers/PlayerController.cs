@@ -10,9 +10,12 @@ public class PlayerController : MonoBehaviour
     private float deathTime = 0.5f;
     private Animator anim;
     private Rigidbody2D playerRb;
+
+    //variables below are used in HitEnemy method (raycast)
     private Vector2 enemyOrigin;
-    private Vector2 enemyRayDirection;
-    private float enemyRayDistance;
+    private Vector2 enemyRayDirection = Vector2.right;
+    private float enemyRayDistance = 1f;
+    private float enemyRayOffsetY = 0.6f;
 
     [SerializeField] private PlayerData playerData;  
 
@@ -25,15 +28,12 @@ public class PlayerController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
-        
+        Movement(); 
     }
     
     void Movement()
@@ -76,11 +76,7 @@ public class PlayerController : MonoBehaviour
 
     public void HitEnemy()
     {
-        enemyOrigin = new Vector2(transform.position.x, transform.position.y - 0.6f);
-        enemyRayDirection = transform.right;
-        enemyRayDistance = 1f;
-
-        //Debug.DrawRay(enemyOrigin, transform.right * 1f, Color.red);
+        enemyOrigin = new Vector2(transform.position.x, transform.position.y - enemyRayOffsetY);
 
         RaycastHit2D hit = Physics2D.Raycast(enemyOrigin, enemyRayDirection, enemyRayDistance, LayerMask.GetMask("Enemy"));
 
@@ -94,22 +90,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    GameObject collidedObject = collision.gameObject;
-
-    //    if (collidedObject.CompareTag("Enemy"))
-    //    {
-    //        if (Input.GetKeyUp(KeyCode.F))
-    //        {
-    //            if (collision.gameObject.GetComponent<Enemy>().CanBeKilled)
-    //            {
-    //                collision.gameObject.GetComponent<Enemy>().DealDamage(playerData.Damage);
-    //            }
-    //        }
-    //    }
-    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
