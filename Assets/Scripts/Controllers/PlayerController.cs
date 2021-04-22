@@ -11,6 +11,12 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private Rigidbody2D playerRb;
 
+    //variables below are used in HitEnemy method (raycast)
+    private Vector2 enemyOrigin;
+    private Vector2 enemyRayDirection = Vector2.right;
+    private const float ENEMY_RAY_DISTANCE = 1f;
+    private const float ENEMY_RAY_OFFSET_Y = 0.6f;
+
     [SerializeField] private PlayerData playerData;  
 
     public bool isOnGround = true;
@@ -27,7 +33,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        Movement(); 
     }
     
     void Movement()
@@ -60,6 +66,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && moveInput != 0 || Input.GetKeyDown(KeyCode.F) && moveInput == 0)
         {
             anim.SetBool("Attack", true);
+            HitEnemy();
         }
         else
         {
@@ -67,18 +74,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    public void HitEnemy()
     {
-        GameObject collidedObject = collision.gameObject;
-        
-        if (collidedObject.CompareTag("Enemy"))
+        enemyOrigin = new Vector2(transform.position.x, transform.position.y - ENEMY_RAY_OFFSET_Y);
+
+        RaycastHit2D hit = Physics2D.Raycast(enemyOrigin, enemyRayDirection, ENEMY_RAY_DISTANCE, LayerMask.GetMask("Enemy"));
+
+        if(hit.collider != null)
         {
-            if (Input.GetKeyUp(KeyCode.F))
+            Enemy collidedObject = hit.collider.gameObject.GetComponent<Enemy>();
+
+            if (collidedObject.CanBeKilled)
             {
-                if (collision.gameObject.GetComponent<Enemy>().CanBeKilled)
-                {
-                    collision.gameObject.GetComponent<Enemy>().DealDamage(playerData.Damage);
-                }
+                collidedObject.DealDamage(playerData.Damage);
             }
         }
     }
