@@ -29,6 +29,6 @@ public class Enemy : MonoBehaviour
 
     public void KillEnemy()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 2);
     }
 }

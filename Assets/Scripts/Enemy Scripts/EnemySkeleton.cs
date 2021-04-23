@@ -63,6 +63,7 @@ public class EnemySkeleton : Enemy
         if (health <= 0)
         {
             //zombieAnim.SetBool("Death", true);
+            zombieAnim.SetTrigger("DeathTrigger");
             KillEnemy();
         }
         else
