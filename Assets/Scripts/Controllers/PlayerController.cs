@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     //variables below are used in HitEnemy method (raycast)
     private Vector2 enemyOrigin;
     private Vector2 enemyRayDirection = Vector2.right;
-    private const float ENEMY_RAY_DISTANCE = 1f;
+    private const float ENEMY_RAY_DISTANCE = 1.5f;
     private const float ENEMY_RAY_OFFSET_Y = 0.6f;
 
     [SerializeField] private PlayerData playerData;  
