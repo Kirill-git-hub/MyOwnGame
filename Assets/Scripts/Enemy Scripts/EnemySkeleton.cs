@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySkeleton : Enemy
+public class EnemySkeleton : Enemy, IMovable
 {
     
     private Rigidbody2D enemyRd;
@@ -21,6 +21,11 @@ public class EnemySkeleton : Enemy
     // Update is called once per frame
     void Update()
     {
+        EnemyMovement();
+    }
+
+    public void EnemyMovement()
+    {
         if (moveRight  )
         {
             enemyRd.velocity = new Vector2(1, enemyRd.velocity.y);  
@@ -31,7 +36,7 @@ public class EnemySkeleton : Enemy
         }
     }
     
-    void EnemyFlip()
+    public void EnemyFlip()
     {
         faceRight = !faceRight;
         Vector2 enemyLocalScale = transform.localScale;
