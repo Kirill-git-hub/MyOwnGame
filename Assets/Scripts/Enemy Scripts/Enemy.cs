@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    protected void EnemyFlip()
+    private void EnemyFlip()
     {
         faceRight = !faceRight;
         Vector2 enemyLocalScale = transform.localScale;
