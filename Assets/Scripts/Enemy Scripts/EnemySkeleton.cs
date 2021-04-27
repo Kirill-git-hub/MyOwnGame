@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySkeleton : Enemy, IMovable
+public class EnemySkeleton : Enemy
 {
     
     private Rigidbody2D enemyRd;
