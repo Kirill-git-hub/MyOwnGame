@@ -163,6 +163,7 @@ MonoBehaviour:
   health: 3
   canBeKilled: 1
   instantKill: 0
+  enemyRb: {fileID: -4917905668489658929}
 --- !u!50 &-4917905668489658929
 Rigidbody2D:
   serializedVersion: 4

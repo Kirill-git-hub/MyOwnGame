@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    
     [SerializeField] private int damage = 1;
     [SerializeField] protected int health = 3;
     [SerializeField] private bool canBeKilled = true;
     [SerializeField] private bool instantKill = false;
-    private bool moveRight = true;
-    private bool faceRight = true;
+    [SerializeField] private Rigidbody2D enemyRb;
+    private bool isMovingRight = true;
+    private bool isFacingRight = true;
+    private bool canMove = true;
     private int speed = 1;
-    protected Rigidbody2D enemyRb;
     public int Damage
     {
         get => damage;
@@ -36,21 +36,22 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject, 1.5f);
     }
 
-    protected void EnemyMovement()
+    private void Update()
     {
-        if (moveRight  )
+        if (canMove)
         {
-            enemyRb.velocity = new Vector2(speed, enemyRb.velocity.y);  
-        }
-        else
-        {
-            enemyRb.velocity = new Vector2(-speed, enemyRb.velocity.y);  
+            MoveEnemy();
         }
     }
-    
-    private void EnemyFlip()
+
+    private void MoveEnemy()
     {
-        faceRight = !faceRight;
+        enemyRb.velocity = new Vector2( isMovingRight ? speed : -speed, enemyRb.velocity.y);
+    }
+    
+    private void FlipEnemy()
+    {
+        isFacingRight = !isFacingRight;
         Vector2 enemyLocalScale = transform.localScale;
         enemyLocalScale.x *= -1;
         transform.localScale = enemyLocalScale;
@@ -60,16 +61,8 @@ public class Enemy : MonoBehaviour
     {
         if(other.gameObject.CompareTag("EnemyBoundary"))
         {
-            if (moveRight)
-            {
-                moveRight = false;
-                EnemyFlip();
-            }
-            else
-            {
-                moveRight = true;
-                EnemyFlip();
-            }
+            isMovingRight = !isMovingRight;
+            FlipEnemy();
         }
     }
 }

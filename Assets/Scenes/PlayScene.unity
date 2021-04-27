@@ -671,7 +671,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163788066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 66.24, y: 2.34, z: 0}
+  m_LocalPosition: {x: 66.89, y: 2.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1892528451}
@@ -2598,7 +2598,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659364036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 240.26, y: 3.32, z: 0}
+  m_LocalPosition: {x: 240.26, y: 2.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1892528451}
@@ -3202,6 +3202,7 @@ MonoBehaviour:
   health: 1000
   canBeKilled: 0
   instantKill: 1
+  enemyRb: {fileID: 0}
 --- !u!483693784 &831485421
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -5320,7 +5321,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263377577}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 96.7, y: -2.18, z: 0}
+  m_LocalPosition: {x: 97.33, y: -2.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1892528451}
@@ -7385,7 +7386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537379298}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.53, y: -2.33, z: 0}
+  m_LocalPosition: {x: 2.99, y: -2.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1892528451}
@@ -18289,6 +18290,7 @@ MonoBehaviour:
   health: 100
   canBeKilled: 0
   instantKill: 1
+  enemyRb: {fileID: 0}
 --- !u!1 &1782817045
 GameObject:
   m_ObjectHideFlags: 0

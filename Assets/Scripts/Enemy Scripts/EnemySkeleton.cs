@@ -9,14 +9,13 @@ public class EnemySkeleton : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        enemyRb = GetComponent<Rigidbody2D>();
         zombieAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        EnemyMovement();
+        
     }
 
     public override void DealDamage(int damage)
