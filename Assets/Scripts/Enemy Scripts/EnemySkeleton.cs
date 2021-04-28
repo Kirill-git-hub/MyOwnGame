@@ -12,12 +12,6 @@ public class EnemySkeleton : Enemy
         zombieAnim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public override void DealDamage(int damage)
     {
         health -= damage;

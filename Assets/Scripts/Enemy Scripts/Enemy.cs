@@ -9,18 +9,19 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected int health = 3;
     [SerializeField] private bool canBeKilled = true;
     [SerializeField] private bool instantKill = false;
+    [SerializeField] private bool canMove = true;
+    [SerializeField] private float speed = 1f;
     [SerializeField] private Rigidbody2D enemyRb;
     private bool isMovingRight = true;
     private bool isFacingRight = true;
-    private bool canMove = true;
-    private int speed = 1;
+    
     public int Damage
     {
         get => damage;
     }
     
     public bool CanBeKilled
-    {
+    { 
         get => canBeKilled;
     }
 
