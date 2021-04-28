@@ -23,7 +23,7 @@ public class HomeMenuController : MonoBehaviour
         {
             if (loadingSceneProgress.isDone)
             {
-                SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+                SceneManager.UnloadSceneAsync(gameObject.scene.name);
             }
         }
     }

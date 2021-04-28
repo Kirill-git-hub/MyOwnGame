@@ -184,4 +184,6 @@ MonoBehaviour:
   health: 5
   canBeKilled: 1
   instantKill: 0
+  canMove: 1
+  speed: 1.5
   enemyRb: {fileID: 1407626530391905776}
