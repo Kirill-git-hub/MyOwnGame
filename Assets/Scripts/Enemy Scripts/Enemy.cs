@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool canMove = true;
     [SerializeField] private float speed = 1f;
     [SerializeField] private Rigidbody2D enemyRb;
-    private bool isMovingRight = true;
     private bool isFacingRight = true;
     
     public int Damage
