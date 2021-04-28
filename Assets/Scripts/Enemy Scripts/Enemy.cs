@@ -47,12 +47,11 @@ public class Enemy : MonoBehaviour
 
     private void MoveEnemy()
     {
-        enemyRb.velocity = new Vector2( isMovingRight ? speed : -speed, enemyRb.velocity.y);
+        enemyRb.velocity = new Vector2( isFacingRight ? speed : -speed, enemyRb.velocity.y);
     }
     
     private void FlipEnemy()
     {
-        isFacingRight = !isFacingRight;
         Vector2 enemyLocalScale = transform.localScale;
         enemyLocalScale.x *= -1;
         transform.localScale = enemyLocalScale;
@@ -62,7 +61,7 @@ public class Enemy : MonoBehaviour
     {
         if(other.gameObject.CompareTag("EnemyBoundary"))
         {
-            isMovingRight = !isMovingRight;
+            isFacingRight = !isFacingRight;
             FlipEnemy();
         }
     }
