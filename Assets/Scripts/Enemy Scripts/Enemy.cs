@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool canDealDamage;
     [SerializeField] private float speed = 1f;
     [SerializeField] private Rigidbody2D enemyRb;
+    [SerializeField] private Animator enemyAnim;
     private bool isFacingRight = true;
     
     public int Damage
@@ -38,17 +39,14 @@ public class Enemy : MonoBehaviour
 
     public void DealDamage(int damage)
     {
+        enemyAnim.SetTrigger("Hit");
         health -= damage;
 
         if (health <= 0)
         {
-            //zombieAnim.SetBool("Death", true);
-            //zombieAnim.SetTrigger("DeathTrigger");
+            CanDealDamage = false;
+            enemyAnim.SetTrigger("DeathTrigger");
             KillEnemy();
-        }
-        else
-        {
-            //zombieAnim.SetTrigger("Hit");
         }
     }
 
