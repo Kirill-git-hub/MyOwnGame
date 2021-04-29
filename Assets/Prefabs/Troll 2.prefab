@@ -118,9 +118,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.107673645, y: -0.5171466}
-  m_Size: {x: 1.4490509, y: 2.064746}
-  m_Direction: 0
+  m_Offset: {x: 0.33690366, y: -0.5754265}
+  m_Size: {x: 2.554298, y: 1.9481992}
+  m_Direction: 1
 --- !u!61 &8947190722249932904
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -180,10 +180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290a371a2ab0ca640b1bff39fa1c0e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   health: 5
   canBeKilled: 1
   instantKill: 0
   canMove: 1
+  canDealDamage: 1
   speed: 1.5
   enemyRb: {fileID: 6460406369064904962}

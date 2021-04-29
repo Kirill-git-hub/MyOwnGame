@@ -164,6 +164,7 @@ MonoBehaviour:
   canBeKilled: 1
   instantKill: 0
   canMove: 1
+  canDealDamage: 1
   speed: 1
   enemyRb: {fileID: -4917905668489658929}
 --- !u!50 &-4917905668489658929

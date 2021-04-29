@@ -4,28 +4,5 @@ using UnityEngine;
 
 public class EnemySkeleton : Enemy
 {
-    private Animator zombieAnim;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        zombieAnim = GetComponent<Animator>();
-    }
-
-    public override void DealDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0)
-        {
-            //zombieAnim.SetBool("Death", true);
-            zombieAnim.SetTrigger("DeathTrigger");
-            KillEnemy();
-        }
-        else
-        {
-            zombieAnim.SetTrigger("Hit");
-        }
-    }
-
+    
 }

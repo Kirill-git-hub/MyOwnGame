@@ -11,7 +11,6 @@ public class HomeMenuController : MonoBehaviour
 
     private AsyncOperation loadingSceneProgress;
 
-
     private void Start()
     {
         startButton.onClick.AddListener( () => StartFirstLevel(/*method params can be here*/) );
@@ -33,6 +32,4 @@ public class HomeMenuController : MonoBehaviour
         loadingSceneProgress = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         startButton.onClick.RemoveAllListeners();
     }
-
-    
 }

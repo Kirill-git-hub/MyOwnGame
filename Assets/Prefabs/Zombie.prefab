@@ -871,6 +871,9 @@ MonoBehaviour:
   health: 3
   canBeKilled: 1
   instantKill: 0
+  canMove: 1
+  canDealDamage: 1
+  speed: 1
   enemyRb: {fileID: 5312501884638933953}
 --- !u!61 &5312501884477868698
 BoxCollider2D:

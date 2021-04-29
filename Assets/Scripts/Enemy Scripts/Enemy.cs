@@ -6,10 +6,11 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int damage = 1;
-    [SerializeField] protected int health = 3;
+    [SerializeField] private int health = 3;
     [SerializeField] private bool canBeKilled = true;
     [SerializeField] private bool instantKill = false;
     [SerializeField] private bool canMove = true;
+    [SerializeField] private bool canDealDamage;
     [SerializeField] private float speed = 1f;
     [SerializeField] private Rigidbody2D enemyRb;
     private bool isFacingRight = true;
@@ -29,7 +30,27 @@ public class Enemy : MonoBehaviour
         get => instantKill;
     }
 
-    public virtual void DealDamage(int damage) { }
+    public bool CanDealDamage
+    {
+        get => canDealDamage;
+        set => canDealDamage = value;
+    }
+
+    public void DealDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            //zombieAnim.SetBool("Death", true);
+            //zombieAnim.SetTrigger("DeathTrigger");
+            KillEnemy();
+        }
+        else
+        {
+            //zombieAnim.SetTrigger("Hit");
+        }
+    }
 
     public void KillEnemy()
     {

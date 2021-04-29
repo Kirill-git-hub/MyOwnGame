@@ -25,5 +25,4 @@ public class Coin : MonoBehaviour
     {
         transform.Rotate(Vector3.up * (Time.deltaTime * ROTATION_SPEED));
     }
-
 }
