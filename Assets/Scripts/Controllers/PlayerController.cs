@@ -124,24 +124,26 @@ public class PlayerController : MonoBehaviour
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 
-            if (enemy.InstantKill)
+            if (enemy.CanDealDamage)
             {
-                anim.SetBool("Die", true);
-                GameController.instance.KillPlayer(deathTime);
-            }
-            else
-            {
-                GameController.instance.DealDamageToPlayer(enemy.Damage);
-
-                if (playerData.PlayerHealth <= 0)
+                if (enemy.InstantKill)
                 {
                     anim.SetBool("Die", true);
                     GameController.instance.KillPlayer(deathTime);
                 }
                 else
                 {
-                    anim.SetBool("Hurt", true);
-                    
+                    GameController.instance.DealDamageToPlayer(enemy.Damage);
+
+                    if (playerData.PlayerHealth <= 0)
+                    {
+                        anim.SetBool("Die", true);
+                        GameController.instance.KillPlayer(deathTime);
+                    }
+                    else
+                    {
+                        anim.SetBool("Hurt", true);
+                    }
                 }
             }
         }
@@ -158,5 +160,4 @@ public class PlayerController : MonoBehaviour
         localScale.x *= -1;
         transform.localScale = localScale;
     }
- 
 }

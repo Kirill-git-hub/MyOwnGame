@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySkeleton : Enemy
+public class Troll : Enemy
 {
     
 }
