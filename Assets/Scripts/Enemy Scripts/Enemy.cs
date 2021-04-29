@@ -11,9 +11,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool instantKill = false;
     [SerializeField] private bool canMove = true;
     [SerializeField] private bool canDealDamage;
+    [SerializeField] private bool isOnGround = true;
     [SerializeField] private float speed = 1f;
     [SerializeField] private Rigidbody2D enemyRb;
     [SerializeField] private Animator enemyAnim;
+    private bool isWalking = true;
     private bool isFacingRight = true;
     
     public int Damage
@@ -44,6 +46,7 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
+            isWalking = false;
             CanDealDamage = false;
             enemyAnim.SetTrigger("DeathTrigger");
             KillEnemy();
@@ -52,14 +55,20 @@ public class Enemy : MonoBehaviour
 
     public void KillEnemy()
     {
-        Destroy(gameObject, 1.5f);
+        Destroy(gameObject, 2f);
     }
 
     private void Update()
     {
         if (canMove)
         {
-            MoveEnemy();
+            if (isOnGround)
+            {
+                if (isWalking)
+                {
+                    MoveEnemy();
+                }
+            }
         }
     }
 
@@ -81,6 +90,17 @@ public class Enemy : MonoBehaviour
         {
             isFacingRight = !isFacingRight;
             FlipEnemy();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (!isOnGround)
+        {
+            if (other.gameObject.CompareTag("Ground"))
+            {
+                isOnGround = true;
+            }
         }
     }
 }
