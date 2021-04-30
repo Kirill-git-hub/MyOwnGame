@@ -49,13 +49,12 @@ public class Enemy : MonoBehaviour
             isWalking = false;
             CanDealDamage = false;
             enemyAnim.SetTrigger("DeathTrigger");
-            KillEnemy();
         }
     }
 
-    public void KillEnemy()
+    private void KillEnemy()
     {
-        Destroy(gameObject, 1.5f);
+        Destroy(gameObject);
     }
 
     private void Update()
