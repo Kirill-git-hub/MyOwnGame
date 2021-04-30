@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool instantKill = false;
     [SerializeField] private bool canMove = true;
     [SerializeField] private bool canDealDamage;
-    [SerializeField] private bool isOnGround = true;
+    [SerializeField] private bool isGrounded = true;
     [SerializeField] private float speed = 1f;
     [SerializeField] private Rigidbody2D enemyRb;
     [SerializeField] private Animator enemyAnim;
@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
     {
         if (canMove)
         {
-            if (isOnGround)
+            if (isGrounded)
             {
                 if (isWalking)
                 {
@@ -94,11 +94,11 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (!isOnGround)
+        if (!isGrounded)
         {
             if (other.gameObject.CompareTag("Ground"))
             {
-                isOnGround = true;
+                isGrounded = true;
             }
         }
     }
