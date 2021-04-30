@@ -878,6 +878,7 @@ MonoBehaviour:
   enemyRb: {fileID: 5312501884638933953}
   enemyAnim: {fileID: 8802552603379039343}
   collider2D: {fileID: 5312501885273352219}
+  rigidbody2D: {fileID: 5312501884638933953}
 --- !u!61 &5312501884477868698
 BoxCollider2D:
   m_ObjectHideFlags: 0

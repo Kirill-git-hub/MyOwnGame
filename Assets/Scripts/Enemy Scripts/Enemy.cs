@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Rigidbody2D enemyRb;
     [SerializeField] private Animator enemyAnim;
     [SerializeField] private Collider2D collider2D;
+    [SerializeField] private Rigidbody2D rigidbody2D;
     private bool isWalking = true;
     private bool isFacingRight = true;
     
@@ -47,6 +48,7 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
+            rigidbody2D.gravityScale = 0;
             collider2D.enabled = false;
             isWalking = false;
             CanDealDamage = false;

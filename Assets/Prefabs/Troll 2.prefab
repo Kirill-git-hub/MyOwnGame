@@ -191,3 +191,4 @@ MonoBehaviour:
   enemyRb: {fileID: 6460406369064904962}
   enemyAnim: {fileID: 2770010585107930124}
   collider2D: {fileID: 3403276912530498470}
+  rigidbody2D: {fileID: 6460406369064904962}

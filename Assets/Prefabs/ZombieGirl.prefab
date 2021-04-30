@@ -170,6 +170,7 @@ MonoBehaviour:
   enemyRb: {fileID: -4917905668489658929}
   enemyAnim: {fileID: 6699698790230578532}
   collider2D: {fileID: 8395686943955539882}
+  rigidbody2D: {fileID: -4917905668489658929}
 --- !u!50 &-4917905668489658929
 Rigidbody2D:
   serializedVersion: 4
