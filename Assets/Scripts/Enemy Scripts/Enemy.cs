@@ -11,8 +11,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool instantKill = false;
     [SerializeField] private bool canMove = true;
     [SerializeField] private bool canDealDamage;
+    [SerializeField] private bool isGrounded = true;
     [SerializeField] private float speed = 1f;
     [SerializeField] private Rigidbody2D enemyRb;
+    [SerializeField] private Animator enemyAnim;
+    [SerializeField] private Collider2D collider2D;
+    [SerializeField] private Rigidbody2D rigidbody2D;
+    private bool isWalking = true;
     private bool isFacingRight = true;
     
     public int Damage
@@ -38,30 +43,35 @@ public class Enemy : MonoBehaviour
 
     public void DealDamage(int damage)
     {
+        enemyAnim.SetTrigger("Hit");
         health -= damage;
 
         if (health <= 0)
         {
-            //zombieAnim.SetBool("Death", true);
-            //zombieAnim.SetTrigger("DeathTrigger");
-            KillEnemy();
-        }
-        else
-        {
-            //zombieAnim.SetTrigger("Hit");
+            rigidbody2D.gravityScale = 0;
+            collider2D.enabled = false;
+            isWalking = false;
+            CanDealDamage = false;
+            enemyAnim.SetTrigger("DeathTrigger");
         }
     }
 
-    public void KillEnemy()
+    private void KillEnemy()
     {
-        Destroy(gameObject, 1.5f);
+        Destroy(gameObject);
     }
 
     private void Update()
     {
         if (canMove)
         {
-            MoveEnemy();
+            if (isGrounded)
+            {
+                if (isWalking)
+                {
+                    MoveEnemy();
+                }
+            }
         }
     }
 
@@ -83,6 +93,19 @@ public class Enemy : MonoBehaviour
         {
             isFacingRight = !isFacingRight;
             FlipEnemy();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        GameObject collidedObject = other.gameObject;
+        
+        if (!isGrounded)
+        {
+            if (collidedObject.CompareTag("Ground"))
+            {
+                isGrounded = true;
+            }
         }
     }
 }

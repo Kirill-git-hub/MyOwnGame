@@ -186,5 +186,9 @@ MonoBehaviour:
   instantKill: 0
   canMove: 1
   canDealDamage: 1
+  isGrounded: 1
   speed: 1.5
   enemyRb: {fileID: 1407626530391905776}
+  enemyAnim: {fileID: 1709799850155357108}
+  collider2D: {fileID: 1003698718577685392}
+  rigidbody2D: {fileID: 1407626530391905776}

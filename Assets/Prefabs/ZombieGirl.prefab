@@ -98,7 +98,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b8ca1af0b16a669449634b38e27a8667, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -165,8 +165,12 @@ MonoBehaviour:
   instantKill: 0
   canMove: 1
   canDealDamage: 1
+  isGrounded: 1
   speed: 1
   enemyRb: {fileID: -4917905668489658929}
+  enemyAnim: {fileID: 6699698790230578532}
+  collider2D: {fileID: 8395686943955539882}
+  rigidbody2D: {fileID: -4917905668489658929}
 --- !u!50 &-4917905668489658929
 Rigidbody2D:
   serializedVersion: 4
